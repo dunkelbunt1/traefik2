@@ -1,0 +1,16 @@
+#AReplace the placeholder {YOUR-WORKER-NAME} with a dns name pointing to your worker node.
+kind: IngressRoute
+apiVersion: traefik.containo.us/v1alpha1
+metadata:
+  name: whoami
+  namespace: default
+
+spec:
+  entryPoints: 
+    - web
+  routes:
+  - match: Host(`whoami.dev`) 
+    kind: Rule
+    services:
+    - name: whoami
+      port: 80
